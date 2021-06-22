@@ -1,18 +1,76 @@
-const axios = require('axios');
+const assert = require('chai').assert;
+const util = require('./utils');
 
-async function makeRequest() {
+var expect = require('chai').expect;
+const baseURL = 'https://www.vperfumes.com/'
 
-    const config = {
-        method: 'head',
-        // url: 'https://www.vperfumes.com/products/collectihshddbonproducts-listing/sale-upto-75/605b8afadeab490012e8b1f6'
-        url: 'https://www.vperfumes.com/home'
-    }
+'use strict';
 
-    let res = await axios(config)
+async function getResponseStatus() {
+    return getResponseStatus()
+  }
 
-    console.log(res.status);
+async function getResponseTime() {
+    return getResponseTime()
+    
 }
 
-makeRequest();
+  describe('response status should be 200', () => {
+    it('returns 200', async () => {
+      const result = await util.getResponseStatus(baseURL+'home');
+      expect(result).to.eql(200);
+    })
+  })
 
-module.exports.makeRequest = makeRequest;
+  describe('response status should be 200', () => {
+    it('returns 200', async () => {
+      const result = await util.getResponseStatus(baseURL+'product/products-listing');
+      expect(result).to.eql(200);
+    })
+  })
+
+  describe('response status should be 200', () => {
+    it('returns 200', async () => {
+      const result = await util.getResponseStatus(baseURL+'products/product-detail/gucci-guilty-absolute-pour-homme-for-men-eau-de-parfum/721');
+      expect(result).to.eql(200);
+    })
+  })
+
+  describe('response status should be 200', () => {
+    it('returns 200', async () => {
+      const result = await util.getResponseStatus(baseURL+'products/cart');
+      expect(result).to.eql(200);
+    })
+  })
+  
+  describe('response time should be less than 1000', () => {
+      it('less than 1000', async () => {
+          const result = await util.getResponseTime(baseURL+'home');
+          expect(result).to.be.at.least(1000);
+      })
+  })
+
+  describe('response time should be less than 1000', () => {
+    it('less than 1000', async () => {
+        const result = await util.getResponseTime(baseURL+'product/products-listing');
+        expect(result).to.be.at.least(1000);
+    })
+})
+     
+
+describe('response time should be less than 1000', () => {
+    it('less than 1000', async () => {
+        const result = await util.getResponseTime(baseURL+'products/product-detail/gucci-guilty-absolute-pour-homme-for-men-eau-de-parfum/721');
+        expect(result).to.be.at.least(1000);
+    })
+})
+     
+
+describe('response time should be less than 1000', () => {
+    it('less than 1000', async () => {
+        const result = await util.getResponseTime(baseURL+'products/cart');
+        expect(result).to.be.at.least(1000);
+    })
+})
+     
+       
