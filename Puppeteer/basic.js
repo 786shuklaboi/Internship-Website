@@ -3,13 +3,29 @@
 const puppeteer = require('puppeteer');
 // const fullPageScreenshot = require('puppeteer-full-page-screenshot');
 
-// (async () => {
-//   const browser = await puppeteer.launch();
-//   const page = await browser.newPage();
-//   page.on('console', msg => console.log('PAGE LOG:', msg.text));
-//   await page.goto('https://www.vperfumes.com/home');
-//   await browser.close();
-// })();
+(async () => {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  await page.setRequestInterception(true);
+  // page.on('console', msg => console.log('PAGE LOG:', msg.text));
+  page.on('pageerror', error => {
+    console.log(error.message);
+   });
+ page.on('request', (interceptedRequest) => {
+   console.log( interceptedRequest.url(), " interceptedRequest.url()")
+   if (interceptedRequest.resourceType() === 'image')
+   interceptedRequest.abort();
+ else
+ interceptedRequest.continue();
+});
+
+  await page.goto('https://www.vperfumes.com/home');
+  await browser.close();
+})();
+// exports.interceptedRequest = interceptedRequest;
+
+
+
 // (async () => {
 // 	const browser = await puppeteer.launch();
 // 	const page = await browser.newPage();
@@ -136,3 +152,4 @@ const puppeteer = require('puppeteer');
 //     console.log(err);
 //   }
 // 	})();
+// const puppeteer = require('puppeteer');

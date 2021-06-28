@@ -115,10 +115,14 @@ describe('image block', () => {
     console.log(error.message);
    });
  page.on('request', (interceptedRequest) => {
-   console.log( interceptedRequest.url(), " interceptedRequest.url()")
-   if (interceptedRequest.resourceType() === 'image')
-   interceptedRequest.abort();
- else
+  //  const path = interceptedRequest.url;
+  //  console.log( interceptedRequest.url(), " interceptedRequest.url()")
+  //  console.log((interceptedRequest.url()))
+   if (interceptedRequest.resourceType() === 'image'){
+     if (!interceptedRequest.url().includes(".png"))
+        return
+   interceptedRequest.abort();}
+  else
  interceptedRequest.continue();
 });
 

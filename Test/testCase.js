@@ -1,15 +1,14 @@
 const assert = require('chai').assert;
-const makeRequest = require('../website').makeRequest;
+const getResponseStatus = require('../website').getResponseStatus;
 
 var expect = require('chai').expect;
 
-'use strict';
-describe('website', function(){
-       it('Status code should be 200', function(){
+// 'use strict';
+// describe('website', function(){
+//        it('Status code should be 200', function(){
 
-       let result = makeRequest();    
-       expect(result).to.eql(200); 
+//        let result = getResponseStatus();    
+//        expect(result).to.eql(200); 
 
-    });
-});
-
+//     });
+// });
