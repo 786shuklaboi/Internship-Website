@@ -18,10 +18,13 @@
     "puppeteer-full-page-screenshot": "^1.0.5",
     "request": "^2.88.2",
     "request-promise-native": "^1.0.9",
+    "response-time": "^2.3.2",
     "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
+    "@qawolf/jest-plugin": "^0.9.3",
     "chai": "^4.3.4",
-    "jest": "^27.0.4"
+    "jest": "^26.4.2",
+    "qawolf": "1.7.0"
   }
 }
