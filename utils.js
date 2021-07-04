@@ -105,7 +105,7 @@ exports.getResponseStatus = getResponseStatus;
             interceptedRequest.abort();
         else {
             interceptedRequest.continue();
-            console.log(interceptedRequest.url(), "URLs without image")
+            // console.log(interceptedRequest.url(), "URLs without image")
         }
     });
 
@@ -113,6 +113,24 @@ exports.getResponseStatus = getResponseStatus;
     await browser.close();
 })();
 
+
+// ....................PAGE ERROR........................................//
+
+async () => {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.goto(baseURL+'/home');
+
+    // await page.setRequestInterception(true);
+    page.on('console', msg => console.log('PAGE LOG:', msg.text));
+    page.on('pageerror', error => {
+        console.log(error.message);
+    });
+
+    await browser.close();
+
+
+};
 
 // ....................SCREENSHOTS IN DIFFERENT RESOLUTIONS........................//
 
