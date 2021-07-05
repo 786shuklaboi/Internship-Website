@@ -1,5 +1,6 @@
 const assert = require('chai').assert;
-const util = require('C:\\Users\\akash\\OneDrive\\Desktop\\Internship\\utils');
+// const util = require('C:\\Users\\akash\\OneDrive\\Desktop\\Internship\\utils');
+const util = require('..\\utils');
 var expect = require('chai').expect;
 const baseURL = 'https://www.vperfumes.com/'
 
@@ -19,6 +20,7 @@ async function getResponseSize() {
     return getResponseSize()
     
 }
+console.log("Response Status Test Cases")
 
   describe('response status of the home site should be 200', () => {
     it('returns 200', async () => {
@@ -47,7 +49,10 @@ async function getResponseSize() {
       expect(result).to.eql(200);
     })
   })
-  
+
+// ...........................console.log("Response Time Test Cases")......................//
+
+
 //   describe('response time should be less than 1000', () => {
 //       it('less than 1000', async () => {
 //           const result = await util.getResponseTime(baseURL+'home');
@@ -77,7 +82,11 @@ async function getResponseSize() {
 //         expect(result).to.be.at.least(1000);
 //     })
 // })
-     
+
+
+//..................... console.log("Response Size Test Cases")..............................//
+
+
 //   describe('response size should be less than 1000 kBs', () => {
 //       it('less than 1000', async () => {
 //           const result = await util.getResponseSize(baseURL+'home');
